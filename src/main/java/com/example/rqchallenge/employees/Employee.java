@@ -12,8 +12,14 @@ public class Employee {
 
     private String profileImage;
 
-    public Employee() {
-        
+    public Employee() {}
+
+    public Employee(String id, String employeeName, String employeeSalary, String employeeAge, String profileImage) {
+        this.id = id;
+        this.employeeName = employeeName;
+        this.employeeSalary = employeeSalary;
+        this.employeeAge = employeeAge;
+        this.profileImage = profileImage;
     }
 
 }
