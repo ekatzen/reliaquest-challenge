@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,7 +36,9 @@ public class EmployeeController implements IEmployeeController {
     @Override
     public ResponseEntity<List<Employee>> getAllEmployees() throws IOException {
         logger.info("Received getAllEmployees request");
-        return employeeService.getAllEmployees();
+        var response = employeeService.getAllEmployees();
+        // return new ResponseEntity(response, HttpStatus.OK);
+        return response;
     }
 
     @Override

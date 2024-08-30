@@ -3,6 +3,8 @@ package com.example.rqchallenge;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.FileReader;
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.example.rqchallenge.employees.Employee;
 import com.example.rqchallenge.employees.EmployeeService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ExtendWith(MockitoExtension.class)
 class EmployeeServiceTest {
@@ -46,6 +52,16 @@ class EmployeeServiceTest {
         
         assertTrue(actualResponseEntity.getStatusCode().is2xxSuccessful());
         assertEquals(expectedBody, actualResponseEntity.getBody());
+    }
+
+    @Test
+    void deserializeEmployees() throws JsonMappingException, JsonProcessingException {
+        String jsonAsString = "[{\"id\":1,\"employee_name\":\"Tiger Nixon\",\"employee_salary\":320800,\"employee_age\":61,\"profile_image\":\"\"},{\"id\":2,\"employee_name\":\"Garrett Winters\",\"employee_salary\":170750,\"employee_age\":63,\"profile_image\":\"\"},{\"id\":3,\"employee_name\":\"Ashton Cox\",\"employee_salary\":86000,\"employee_age\":66,\"profile_image\":\"\"}]";
+
+        Collection<Employee> readValues = new ObjectMapper().readValue(
+            jsonAsString, new TypeReference<Collection<Employee>>() {});
+
+            assertEquals(3, readValues.stream().count());
     }
 
 }
