@@ -14,9 +14,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.example.rqchallenge.employees.Employee;
-import com.example.rqchallenge.employees.EmployeeController;
-import com.example.rqchallenge.employees.EmployeeService;
+import com.example.rqchallenge.employees.controller.EmployeeController;
+import com.example.rqchallenge.employees.model.Employee;
+import com.example.rqchallenge.employees.service.EmployeeService;
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeControllerTest {
@@ -31,8 +31,7 @@ public class EmployeeControllerTest {
 	void shoudGetAllEmployees() throws IOException {
         List<Employee> expectedBody = List.of(TestDataUtil.EMPLOYEE_1, TestDataUtil.EMPLOYEE_2);
         
-        Mockito.when(employeeService.getAllEmployees())
-            .thenReturn(new ResponseEntity(expectedBody, HttpStatus.OK));
+        Mockito.when(employeeService.getAllEmployees()).thenReturn(expectedBody);
 
         ResponseEntity<List<Employee>> actualResponseEntity = employeeController.getAllEmployees();
         

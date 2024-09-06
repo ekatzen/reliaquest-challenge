@@ -7,16 +7,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class Response {
-    String status;
+public class EmployeeResponse extends Response {
 
-    String message;
+    private Employee data;
+
+    public Employee getData() {
+        return data;
+    }
 
     @JsonCreator
-    public Response(
+    public EmployeeResponse(
         @JsonProperty(value = "status") String status, 
-        @JsonProperty(value = "message") String message) {
-        this.status = status;
-        this.message = message;
-    }
+        @JsonProperty(value = "message") String message,
+        @JsonProperty(value = "data") Employee data) {
+            super(status, message);
+            this.data = data;
+    }    
 }
