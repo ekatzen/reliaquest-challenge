@@ -28,10 +28,36 @@ public class EmployeeService {
 
 	Logger logger = LoggerFactory.getLogger(EmployeeService.class);
 
-	public ResponseEntity<List<Employee>> getAllEmployees() {
-		logger.info("Processing  getAllEmployees request");
+	// public List<Employee> getAllEmployees() {
+	// 	logger.info("Processing  getAllEmployees request");
+	// 	Response response = restTemplate.getForObject("https://dummy.restapiexample.com/api/v1/employees", Response.class);
+	// 	logger.info("received response {}", response.toString());
+
+	// 	List<Employee> employees = response != null ? response.data != null ? response.data : null : null;
+
+	// 	// ResponseEntity<List<Employee>> empResponseEntity = restTemplate.exchange(BASE_URL + "employees", HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {});
+
+	// 	// ResponseEntity<Object[]> responseEntity =
+	// 	// restTemplate.getForEntity(BASE_URL + "employees", Object[].class);
 		
-		ResponseEntity<List<Employee>> empResponseEntity = restTemplate.exchange(BASE_URL + "employees", HttpMethod.GET, null, new ParameterizedTypeReference<List<Employee>>() {});
+	// 	// Object[] objects = responseEntity.getBody();
+	// 	// ObjectMapper mapper = new ObjectMapper();
+		
+	// 	// List<Employee> employeeList = Arrays.stream(objects)
+	// 	// .map(object -> mapper.convertValue(object, Employee.class))
+	// 	// .collect(Collectors.toList());
+		
+	// 	// List<Employee> employees = responseEntity.getBody();
+
+	// 	logger.info("Received getAllEmployees response {}", employees);
+
+	// 	return employees;
+	// }
+    
+	public ResponseEntity<Response> getEmployeeById(String id) {
+		logger.info("Processing  getEmployeeById request");
+		
+		ResponseEntity<Response> empResponseEntity = restTemplate.getForEntity(BASE_URL + "employee/" + id, Response.class);
 
 		// ResponseEntity<Object[]> responseEntity =
 		// restTemplate.getForEntity(BASE_URL + "employees", Object[].class);
@@ -45,9 +71,8 @@ public class EmployeeService {
 		
 		// List<Employee> employees = responseEntity.getBody();
 
-		logger.info("Received getAllEmployees response {}", empResponseEntity);
+		logger.info("Received getEmployeeById response {}", empResponseEntity);
 
 		return empResponseEntity;
 	}
-    
 }

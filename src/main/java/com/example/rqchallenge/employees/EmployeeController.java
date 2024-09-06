@@ -35,16 +35,18 @@ public class EmployeeController implements IEmployeeController {
 
     @Override
     public ResponseEntity<List<Employee>> getAllEmployees() throws IOException {
-        logger.info("Received getAllEmployees request");
-        var response = employeeService.getAllEmployees();
+        // logger.info("Received getAllEmployees request");
+        // var response = employeeService.getAllEmployees();
         // return new ResponseEntity(response, HttpStatus.OK);
-        return response;
+        // // return response;
+        return null;
     }
 
     @Override
-    public ResponseEntity<Employee> getEmployeeById(String id) {
-        // TODO Auto-generated method stub
-        return null;
+    public ResponseEntity<Response> getEmployeeById(String id) {
+        logger.info("Received getAllEmployees request");
+        var response = employeeService.getEmployeeById(id);
+        return response;
     }
 
     @Override
