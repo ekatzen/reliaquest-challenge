@@ -1,4 +1,4 @@
-package com.example.rqchallenge.employees;
+package com.example.rqchallenge.employees.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.rqchallenge.employees.model.Employee;
+import com.example.rqchallenge.employees.service.EmployeeService;
 
 @RestController
 public class EmployeeController implements IEmployeeController {
@@ -35,18 +38,16 @@ public class EmployeeController implements IEmployeeController {
 
     @Override
     public ResponseEntity<List<Employee>> getAllEmployees() throws IOException {
-        // logger.info("Received getAllEmployees request");
-        // var response = employeeService.getAllEmployees();
-        // return new ResponseEntity(response, HttpStatus.OK);
-        // // return response;
-        return null;
+        logger.info("Received getAllEmployees request");
+        var response = employeeService.getAllEmployees();
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<Response> getEmployeeById(String id) {
+    public ResponseEntity<Employee> getEmployeeById(String id) {
         logger.info("Received getAllEmployees request");
-        var response = employeeService.getEmployeeById(id);
-        return response;
+        Employee response = employeeService.getEmployeeById(id);
+        return new ResponseEntity(response, HttpStatus.OK);
     }
 
     @Override

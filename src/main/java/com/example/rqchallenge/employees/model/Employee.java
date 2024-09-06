@@ -1,11 +1,11 @@
-package com.example.rqchallenge.employees;
+package com.example.rqchallenge.employees.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Employee {
+public class Employee implements ResponseData {
     private int id;
 
     private String employeeName;

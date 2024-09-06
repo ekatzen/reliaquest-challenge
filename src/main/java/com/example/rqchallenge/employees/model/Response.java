@@ -1,0 +1,30 @@
+package com.example.rqchallenge.employees.model;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Response {
+    String status;
+
+    ResponseData data;
+
+    String message;
+
+    public ResponseData getData() {
+        return data;
+    }
+
+     @JsonCreator
+    public Response(
+        @JsonProperty(value = "status") String status, 
+        @JsonProperty(value = "data") ResponseData data, 
+        @JsonProperty(value = "message") String message) {
+        this.status = status;
+        this.data = data;
+        this.message = message;
+    }
+}

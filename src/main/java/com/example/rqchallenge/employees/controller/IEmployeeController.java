@@ -1,7 +1,9 @@
-package com.example.rqchallenge.employees;
+package com.example.rqchallenge.employees.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.rqchallenge.employees.model.Employee;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,7 +19,7 @@ public interface IEmployeeController {
     ResponseEntity<List<Employee>> getEmployeesByNameSearch(@PathVariable String searchString);
 
     @GetMapping("/{id}")
-    ResponseEntity<Response> getEmployeeById(@PathVariable String id);
+    ResponseEntity<Employee> getEmployeeById(@PathVariable String id);
 
     @GetMapping("/highestSalary")
     ResponseEntity<Integer> getHighestSalaryOfEmployees();

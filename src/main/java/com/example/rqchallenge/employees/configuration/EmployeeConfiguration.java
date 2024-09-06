@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
-import com.example.rqchallenge.employees.EmployeeService;
+import com.example.rqchallenge.employees.service.EmployeeService;
 
 @Configuration
 public class EmployeeConfiguration {
